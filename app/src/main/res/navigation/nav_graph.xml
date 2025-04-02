@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/noteListFragment"
+    android:id="@+id/nav_graph">
+    <fragment
+        android:id="@+id/noteListFragment"
+        android:name="farkhat.myrzabekov.notes.NoteListFragment"
+        android:label="Note List"
+        tools:layout="@layout/fragment_note_list">
+        <action
+            android:id="@+id/action_noteListFragment_to_noteDetailFragment"
+            app:destination="@id/noteDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/noteDetailFragment"
+        android:name="farkhat.myrzabekov.notes.NoteDetailFragment"
+        android:label="Note Detail"
+        tools:layout="@layout/fragment_note_detail">
+
+        <argument
+            android:name="noteId"
+            app:argType="long"
+            android:defaultValue="0L" />
+
+        <argument
+            android:name="isNewNote"
+            app:argType="boolean"
+            android:defaultValue="false"/>
+    </fragment>
+</navigation>
