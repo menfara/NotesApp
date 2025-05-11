@@ -8,6 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.google.firebase.Firebase
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.analytics
 import farkhat.myrzabekov.notes.databinding.FragmentNoteDetailBinding
 
 class NoteDetailFragment : Fragment() {
@@ -17,12 +20,23 @@ class NoteDetailFragment : Fragment() {
     private val args: NoteDetailFragmentArgs by navArgs()
     private var currentNote: Note? = null
 
+    // Declare FirebaseAnalytics instance
+//    private lateinit var firebaseAnalytics: FirebaseAnalytics
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        // Initialize FirebaseAnalytics
+//        firebaseAnalytics = Firebase.analytics
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         binding = FragmentNoteDetailBinding.inflate(inflater, container, false)
 
         if (args.noteId != 0L) {
+//            firebaseAnalytics.logEvent("view_note", null)
+
             noteViewModel.allNotes.observe(viewLifecycleOwner) { notes ->
                 currentNote = notes.find { it.id == args.noteId }
                 currentNote?.let {
@@ -40,7 +54,7 @@ class NoteDetailFragment : Fragment() {
             val title = binding.etTitle.text.toString()
             val content = binding.etContent.text.toString()
 
-            if (currentNote == null) {
+            if (currentNote == null) { // Saving a new note
                 val newNote = Note(title = title, content = content)
                 noteViewModel.addNote(newNote)
             } else {

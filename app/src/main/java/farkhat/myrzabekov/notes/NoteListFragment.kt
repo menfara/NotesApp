@@ -10,6 +10,9 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.Firebase
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.analytics
 import farkhat.myrzabekov.notes.databinding.FragmentNoteListBinding
 
 class NoteListFragment : Fragment() {
@@ -17,6 +20,12 @@ class NoteListFragment : Fragment() {
     private val noteViewModel: NoteViewModel by viewModels()
     private lateinit var binding: FragmentNoteListBinding
     private lateinit var adapter: NoteAdapter
+    private lateinit var firebaseAnalytics: FirebaseAnalytics
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        firebaseAnalytics = Firebase.analytics
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,7 +36,9 @@ class NoteListFragment : Fragment() {
         val recyclerView = binding.recyclerView
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         adapter = NoteAdapter { note ->
-            val action = NoteListFragmentDirections.actionNoteListFragmentToNoteDetailFragment(note.id)
+            val action =
+                NoteListFragmentDirections.actionNoteListFragmentToNoteDetailFragment(note.id)
+            firebaseAnalytics.logEvent("view_note", null)
             findNavController().navigate(action)
         }
         recyclerView.adapter = adapter

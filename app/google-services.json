@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "225437692267",
+    "project_id": "techordamessaging",
+    "storage_bucket": "techordamessaging.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:225437692267:android:a855158b9044dfb2ef5c2e",
+        "android_client_info": {
+          "package_name": "farkhat.myrzabekov.messagingapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7dkiL35r9t9Nukmg0K5TlSzS2NBXfVcc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:225437692267:android:73059d844f1a3809ef5c2e",
+        "android_client_info": {
+          "package_name": "farkhat.myrzabekov.notes"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7dkiL35r9t9Nukmg0K5TlSzS2NBXfVcc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
